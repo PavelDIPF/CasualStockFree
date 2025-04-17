@@ -1,174 +1,179 @@
 :root {
     --main-color: rgb(254, 155, 0);
-    --dark-color: rgb(200, 120, 0);
-    --light-color: rgb(255, 185, 50);
-    --tg-bg-color: var(--tg-theme-bg-color, #ffffff);
-    --tg-text-color: var(--tg-theme-text-color, #000000);
-    --tg-hint-color: var(--tg-theme-hint-color, #707579);
-    --tg-link-color: var(--tg-theme-link-color, #2678b6);
-    --tg-button-color: var(--tg-theme-button-color, #5bc8fb);
-    --tg-button-text-color: var(--tg-theme-button-text-color, #ffffff);
+    --dark-bg: #121212;
+    --darker-bg: #0a0a0a;
+    --card-bg: #1e1e1e;
+    --text-color: #f0f0f0;
+    --text-muted: #aaaaaa;
+    --neon-glow: 0 0 10px var(--main-color);
 }
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--tg-bg-color);
-    color: var(--tg-text-color);
-    font-size: 14px;
-    line-height: 1.4;
+/* Тёмная тема по умолчанию */
+body.dark-theme {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
 }
 
-.screen {
-    display: none;
-    height: 100vh;
-    overflow-y: auto;
-    padding-bottom: 20px;
+/* Анимации */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
-.screen.active {
-    display: block;
+@keyframes glow {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
 }
 
-/* Адаптация под Telegram Mini App */
-.header {
-    padding: 10px 15px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+@keyframes shine {
+    0% { box-shadow: 0 0 5px var(--main-color); }
+    50% { box-shadow: 0 0 20px var(--main-color); }
+    100% { box-shadow: 0 0 5px var(--main-color); }
 }
 
-.app-content {
-    padding: 15px;
+/* Общие стили */
+.section {
+    margin-bottom: 25px;
 }
 
-/* Стили для авторизации */
-.auth-container {
-    max-width: 100%;
-    padding: 20px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-.auth-form {
-    width: 100%;
-    max-width: 300px;
-}
-
-.auth-input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    background-color: var(--tg-bg-color);
-    color: var(--tg-text-color);
-}
-
-.auth-btn {
-    width: 100%;
-    padding: 12px;
-    background-color: var(--main-color);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 10px;
-    cursor: pointer;
-}
-
-.auth-btn.secondary {
-    background-color: transparent;
+.section-title {
     color: var(--main-color);
-    border: 1px solid var(--main-color);
+    text-align: center;
+    animation: pulse 2s infinite;
+}
+
+.neon-box {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid rgba(254, 155, 0, 0.3);
+    box-shadow: var(--neon-glow);
+    transition: all 0.3s;
+}
+
+.neon-box:hover {
+    border-color: var(--main-color);
+}
+
+.glow-text {
+    text-shadow: 0 0 5px var(--main-color);
 }
 
 /* Кликер */
 .clicker-container {
-    background-color: var(--tg-theme-secondary-bg-color, #f3f2f8);
-    border-radius: 12px;
-    padding: 20px;
     text-align: center;
-    margin-bottom: 20px;
 }
 
 .clicker-counter {
-    font-size: 36px;
+    font-size: 3rem;
     font-weight: bold;
     margin: 15px 0;
     color: var(--main-color);
+    text-shadow: 0 0 5px rgba(254, 155, 0, 0.7);
 }
 
 .clicker-btn {
-    background-color: var(--main-color);
-    color: white;
+    background: var(--main-color);
+    color: #000;
     border: none;
-    padding: 15px 30px;
-    font-size: 18px;
-    border-radius: 25px;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border-radius: 50px;
     cursor: pointer;
-    width: 100%;
-    max-width: 200px;
+    font-weight: bold;
+    animation: shine 3s infinite;
+    transition: transform 0.1s;
 }
 
-.clicker-save {
-    margin-top: 15px;
-    font-size: 12px;
-    color: var(--tg-hint-color);
+.clicker-btn:active {
+    transform: scale(0.95);
+}
+
+/* Рулетка */
+.roulette-container {
+    text-align: center;
+}
+
+.roulette-wheel {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+    overflow: hidden;
+    height: 60px;
+}
+
+.roulette-item {
+    width: 60px;
+    height: 60px;
+    background: var(--color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+    font-weight: bold;
+    color: #000;
+    flex-shrink: 0;
+}
+
+.roulette-btn {
+    background: linear-gradient(45deg, #ff8a00, #ff0058);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    animation: shine 3s infinite;
+}
+
+.roulette-result {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    min-height: 24px;
 }
 
 /* Коды */
 .code-input-container {
     display: flex;
-    gap: 10px;
     margin-bottom: 15px;
 }
 
 #code-input {
     flex-grow: 1;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: var(--tg-bg-color);
-    color: var(--tg-text-color);
+    background: var(--darker-bg);
+    border: 1px solid var(--main-color);
+    color: var(--text-color);
+    padding: 10px;
+    border-radius: 8px 0 0 8px;
 }
 
-#activate-code-btn {
-    padding: 12px 15px;
-    background-color: var(--main-color);
-    color: white;
+.mini-btn {
+    background: var(--main-color);
+    color: #000;
     border: none;
-    border-radius: 8px;
+    padding: 0 15px;
+    cursor: pointer;
+    border-radius: 0 8px 8px 0;
+    font-weight: bold;
+}
+
+.codes-list {
+    display: grid;
+    gap: 10px;
 }
 
 .code-item {
-    background-color: var(--tg-theme-secondary-bg-color, #f3f2f8);
-    border-radius: 12px;
-    padding: 15px;
-    margin-bottom: 10px;
+    background: var(--card-bg);
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 3px solid var(--main-color);
+    animation: glow 2s infinite;
 }
 
-.code-status {
-    display: block;
-    font-size: 12px;
-    color: var(--tg-hint-color);
-    margin-top: 5px;
-}
-
-/* Адаптация для маленьких экранов */
-@media (max-width: 600px) {
-    .features-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .auth-form {
-        padding: 0 15px;
-    }
+.code-item span {
+    color: var(--main-color);
+    font-weight: bold;
 }
