@@ -3,84 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CasualStockFree - Telegram Mini App</title>
+    <title>CasualStockFree | Кликер + Рулетка</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
-<body>
-    <div id="auth-screen" class="screen active">
-        <div class="auth-container">
-            <h2>Вход в CasualStockFree</h2>
-            <div class="auth-form">
-                <input type="text" id="login-username" placeholder="Логин" class="auth-input">
-                <input type="password" id="login-password" placeholder="Пароль" class="auth-input">
-                <button id="login-btn" class="auth-btn">Войти</button>
-                <button id="register-btn" class="auth-btn secondary">Регистрация</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="register-screen" class="screen">
-        <div class="auth-container">
-            <h2>Регистрация</h2>
-            <div class="auth-form">
-                <input type="text" id="reg-username" placeholder="Придумайте логин" class="auth-input">
-                <input type="password" id="reg-password" placeholder="Придумайте пароль" class="auth-input">
-                <input type="password" id="reg-confirm" placeholder="Повторите пароль" class="auth-input">
-                <button id="complete-register-btn" class="auth-btn">Зарегистрироваться</button>
-                <button id="back-to-login-btn" class="auth-btn secondary">Назад к входу</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="main-screen" class="screen">
+<body class="dark-theme">
+    <!-- Главный экран -->
+    <div id="main-screen" class="screen active">
         <header>
             <div class="header-content">
-                <div class="logo">CasualStockFree</div>
+                <div class="logo glow-text">CasualStockFree</div>
                 <div class="user-menu">
-                    <span id="username-display"></span>
-                    <button id="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
+                    <span id="username-display">Гость</span>
+                    <button id="theme-toggle" class="icon-btn"><i class="fas fa-moon"></i></button>
                 </div>
             </div>
         </header>
 
         <div class="app-content">
-            <section id="features" class="features">
-                <h2 class="section-title">Наши преимущества</h2>
-                <div class="features-grid">
-                    <!-- Преимущества как в предыдущей версии -->
-                </div>
-            </section>
-
-            <section id="clicker" class="clicker-section">
-                <h2 class="section-title">Кликер</h2>
-                <div class="clicker-container">
+            <!-- Кликер -->
+            <section id="clicker" class="section">
+                <h2 class="section-title pulse">✨ Кликер</h2>
+                <div class="clicker-container neon-box">
                     <div class="clicker-counter">0</div>
-                    <button class="clicker-btn">Клик!</button>
-                    <div class="clicker-save">
-                        <button id="save-score-btn">Сохранить</button>
-                        <span id="last-saved">Последнее сохранение: никогда</span>
+                    <button class="clicker-btn shine">Клик!</button>
+                    <div class="clicker-actions">
+                        <button id="save-score-btn" class="mini-btn"><i class="fas fa-save"></i> Сохранить</button>
+                        <span id="last-saved">Не сохранено</span>
                     </div>
                 </div>
             </section>
 
-            <section id="codes" class="codes-section">
-                <h2 class="section-title">Коды</h2>
-                <div class="code-input-container">
-                    <input type="text" id="code-input" placeholder="Введите код">
-                    <button id="activate-code-btn">Активировать</button>
-                </div>
-                <div class="codes-container">
-                    <div class="code-item">
-                        <h3>CSF2024</h3>
-                        <p>Бонус 1000 очков</p>
-                        <span class="code-status">Не активирован</span>
+            <!-- Рулетка -->
+            <section id="roulette" class="section">
+                <h2 class="section-title pulse">🎰 Рулетка</h2>
+                <div class="roulette-container neon-box">
+                    <div class="roulette-wheel" id="roulette-wheel">
+                        <div class="roulette-item" style="--color: #ff4d4d;">x2</div>
+                        <div class="roulette-item" style="--color: #4d79ff;">+500</div>
+                        <div class="roulette-item" style="--color: #ffcc4d;">x0.5</div>
+                        <div class="roulette-item" style="--color: #4dffb8;">+1000</div>
+                        <div class="roulette-item" style="--color: #be4dff;">JACKPOT</div>
                     </div>
-                    <div class="code-item">
-                        <h3>FREECLIENT</h3>
-                        <p>x2 множитель на 1 час</p>
-                        <span class="code-status">Не активирован</span>
+                    <button id="spin-btn" class="roulette-btn shine">Крутить (100 очков)</button>
+                    <div class="roulette-result" id="roulette-result"></div>
+                </div>
+            </section>
+
+            <!-- Коды -->
+            <section id="codes" class="section">
+                <h2 class="section-title pulse">🎁 Коды</h2>
+                <div class="code-input-container neon-box">
+                    <input type="text" id="code-input" placeholder="Введи код...">
+                    <button id="activate-code-btn" class="mini-btn"><i class="fas fa-key"></i></button>
+                </div>
+                <div class="codes-list">
+                    <div class="code-item glow" data-code="CSF2024">
+                        <span>CSF2024</span> +1000 очков
+                    </div>
+                    <div class="code-item glow" data-code="FREECLIENT">
+                        <span>FREECLIENT</span> x2 на 1 час
                     </div>
                 </div>
             </section>
