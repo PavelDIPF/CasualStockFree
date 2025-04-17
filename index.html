@@ -1,35 +1,127 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>CasualStock-Free</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CasualStockFree - Лучший клиент для комфортной игры</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="container">
-      <span class="logo">CasualStock-Free</span>
-    </div>
-  </header>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">CasualStockFree</div>
+                <nav>
+                    <ul>
+                        <li><a href="#features">Преимущества</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#codes">Коды</a></li>
+                        <li><a href="#clicker">Кликер</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
 
-  <main class="content">
-    <h1>Наши преимущества</h1>
-    <p class="subtitle">Почему стоит выбрать именно нас?</p>
+    <section class="hero">
+        <div class="container">
+            <h1>Лучший клиент для комфортной игры</h1>
+            <p>Получите наилучшие впечатления от игры с CasualStockFree</p>
+            <a href="#download" class="btn">Скачать</a>
+        </div>
+    </section>
 
-    <div class="cards">
-      <div class="card">
-        <h2>🚀 Быстрый доступ</h2>
-        <p>Мгновенное открытие мини-приложения прямо в Telegram, без задержек.</p>
-      </div>
-      <div class="card">
-        <h2>🎨 Красивый дизайн</h2>
-        <p>Современный и приятный интерфейс, вдохновлённый лучшими UI практиками.</p>
-      </div>
-      <div class="card">
-        <h2>🔒 Безопасность</h2>
-        <p>Данные пользователей надёжно защищены, и не хранятся на сторонних серверах.</p>
-      </div>
-    </div>
-  </main>
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Наши преимущества</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Оптимизация</h3>
+                    <p>Запускайте наш клиент даже на слабых компьютерах благодаря постоянным улучшениям оптимизации.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Красивый внешний вид</h3>
+                    <p>Множество визуальных функций и возможность настроить оформление под себя.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Частые обновления</h3>
+                    <p>Регулярно добавляем новые функции и улучшаем существующие.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Настраиваемость</h3>
+                    <p>Настройте практически любую функцию под себя или используйте конфигурации других пользователей.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">О нас</h2>
+            <p>Мы предоставляем вам лучший клиент для комфортной игры, который даст вам наилучшие впечатления от игры.</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">218864</div>
+                    <div class="stat-label">Пользователей</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">6024655</div>
+                    <div class="stat-label">Запусков клиента</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1007</div>
+                    <div class="stat-label">Обновлений</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">980</div>
+                    <div class="stat-label">Дней с открытия</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="clicker" class="clicker-section">
+        <div class="container">
+            <h2 class="section-title">Кликер</h2>
+            <div class="clicker-container">
+                <div class="clicker-counter">0</div>
+                <button class="clicker-btn">Клик!</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="codes" class="codes-section">
+        <div class="container">
+            <h2 class="section-title">Коды</h2>
+            <div class="codes-container">
+                <div class="code-item">
+                    <h3>CSF2024</h3>
+                    <p>Активируйте этот код для получения бонусов</p>
+                </div>
+                <div class="code-item">
+                    <h3>FREECLIENT</h3>
+                    <p>Специальное предложение для новых пользователей</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 CasualStockFree. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Кликер
+        const clickerBtn = document.querySelector('.clicker-btn');
+        const clickerCounter = document.querySelector('.clicker-counter');
+        let count = 0;
+        
+        clickerBtn.addEventListener('click', () => {
+            count++;
+            clickerCounter.textContent = count;
+        });
+    </script>
 </body>
 </html>
