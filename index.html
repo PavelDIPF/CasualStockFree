@@ -2,126 +2,91 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CasualStockFree - Лучший клиент для комфортной игры</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CasualStockFree - Telegram Mini App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <header>
-        <div class="container">
+    <div id="auth-screen" class="screen active">
+        <div class="auth-container">
+            <h2>Вход в CasualStockFree</h2>
+            <div class="auth-form">
+                <input type="text" id="login-username" placeholder="Логин" class="auth-input">
+                <input type="password" id="login-password" placeholder="Пароль" class="auth-input">
+                <button id="login-btn" class="auth-btn">Войти</button>
+                <button id="register-btn" class="auth-btn secondary">Регистрация</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="register-screen" class="screen">
+        <div class="auth-container">
+            <h2>Регистрация</h2>
+            <div class="auth-form">
+                <input type="text" id="reg-username" placeholder="Придумайте логин" class="auth-input">
+                <input type="password" id="reg-password" placeholder="Придумайте пароль" class="auth-input">
+                <input type="password" id="reg-confirm" placeholder="Повторите пароль" class="auth-input">
+                <button id="complete-register-btn" class="auth-btn">Зарегистрироваться</button>
+                <button id="back-to-login-btn" class="auth-btn secondary">Назад к входу</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-screen" class="screen">
+        <header>
             <div class="header-content">
                 <div class="logo">CasualStockFree</div>
-                <nav>
-                    <ul>
-                        <li><a href="#features">Преимущества</a></li>
-                        <li><a href="#about">О нас</a></li>
-                        <li><a href="#codes">Коды</a></li>
-                        <li><a href="#clicker">Кликер</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="container">
-            <h1>Лучший клиент для комфортной игры</h1>
-            <p>Получите наилучшие впечатления от игры с CasualStockFree</p>
-            <a href="#download" class="btn">Скачать</a>
-        </div>
-    </section>
-
-    <section id="features" class="features">
-        <div class="container">
-            <h2 class="section-title">Наши преимущества</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>Оптимизация</h3>
-                    <p>Запускайте наш клиент даже на слабых компьютерах благодаря постоянным улучшениям оптимизации.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Красивый внешний вид</h3>
-                    <p>Множество визуальных функций и возможность настроить оформление под себя.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Частые обновления</h3>
-                    <p>Регулярно добавляем новые функции и улучшаем существующие.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Настраиваемость</h3>
-                    <p>Настройте практически любую функцию под себя или используйте конфигурации других пользователей.</p>
+                <div class="user-menu">
+                    <span id="username-display"></span>
+                    <button id="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
                 </div>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">О нас</h2>
-            <p>Мы предоставляем вам лучший клиент для комфортной игры, который даст вам наилучшие впечатления от игры.</p>
-            <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-number">218864</div>
-                    <div class="stat-label">Пользователей</div>
+        <div class="app-content">
+            <section id="features" class="features">
+                <h2 class="section-title">Наши преимущества</h2>
+                <div class="features-grid">
+                    <!-- Преимущества как в предыдущей версии -->
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">6024655</div>
-                    <div class="stat-label">Запусков клиента</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">1007</div>
-                    <div class="stat-label">Обновлений</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">980</div>
-                    <div class="stat-label">Дней с открытия</div>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <section id="clicker" class="clicker-section">
-        <div class="container">
-            <h2 class="section-title">Кликер</h2>
-            <div class="clicker-container">
-                <div class="clicker-counter">0</div>
-                <button class="clicker-btn">Клик!</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="codes" class="codes-section">
-        <div class="container">
-            <h2 class="section-title">Коды</h2>
-            <div class="codes-container">
-                <div class="code-item">
-                    <h3>CSF2024</h3>
-                    <p>Активируйте этот код для получения бонусов</p>
+            <section id="clicker" class="clicker-section">
+                <h2 class="section-title">Кликер</h2>
+                <div class="clicker-container">
+                    <div class="clicker-counter">0</div>
+                    <button class="clicker-btn">Клик!</button>
+                    <div class="clicker-save">
+                        <button id="save-score-btn">Сохранить</button>
+                        <span id="last-saved">Последнее сохранение: никогда</span>
+                    </div>
                 </div>
-                <div class="code-item">
-                    <h3>FREECLIENT</h3>
-                    <p>Специальное предложение для новых пользователей</p>
+            </section>
+
+            <section id="codes" class="codes-section">
+                <h2 class="section-title">Коды</h2>
+                <div class="code-input-container">
+                    <input type="text" id="code-input" placeholder="Введите код">
+                    <button id="activate-code-btn">Активировать</button>
                 </div>
-            </div>
+                <div class="codes-container">
+                    <div class="code-item">
+                        <h3>CSF2024</h3>
+                        <p>Бонус 1000 очков</p>
+                        <span class="code-status">Не активирован</span>
+                    </div>
+                    <div class="code-item">
+                        <h3>FREECLIENT</h3>
+                        <p>x2 множитель на 1 час</p>
+                        <span class="code-status">Не активирован</span>
+                    </div>
+                </div>
+            </section>
         </div>
-    </section>
+    </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 CasualStockFree. Все права защищены.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Кликер
-        const clickerBtn = document.querySelector('.clicker-btn');
-        const clickerCounter = document.querySelector('.clicker-counter');
-        let count = 0;
-        
-        clickerBtn.addEventListener('click', () => {
-            count++;
-            clickerCounter.textContent = count;
-        });
-    </script>
+    <script src="app.js"></script>
 </body>
 </html>
