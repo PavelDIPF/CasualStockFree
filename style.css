@@ -2,234 +2,173 @@
     --main-color: rgb(254, 155, 0);
     --dark-color: rgb(200, 120, 0);
     --light-color: rgb(255, 185, 50);
+    --tg-bg-color: var(--tg-theme-bg-color, #ffffff);
+    --tg-text-color: var(--tg-theme-text-color, #000000);
+    --tg-hint-color: var(--tg-theme-hint-color, #707579);
+    --tg-link-color: var(--tg-theme-link-color, #2678b6);
+    --tg-button-color: var(--tg-theme-button-color, #5bc8fb);
+    --tg-button-text-color: var(--tg-theme-button-text-color, #ffffff);
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
-    color: #333;
+    background-color: var(--tg-bg-color);
+    color: var(--tg-text-color);
+    font-size: 14px;
+    line-height: 1.4;
 }
 
-header {
+.screen {
+    display: none;
+    height: 100vh;
+    overflow-y: auto;
+    padding-bottom: 20px;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* Адаптация под Telegram Mini App */
+.header {
+    padding: 10px 15px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.app-content {
+    padding: 15px;
+}
+
+/* Стили для авторизации */
+.auth-container {
+    max-width: 100%;
+    padding: 20px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.auth-form {
+    width: 100%;
+    max-width: 300px;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: var(--tg-bg-color);
+    color: var(--tg-text-color);
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 12px;
     background-color: var(--main-color);
     color: white;
-    padding: 15px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    margin-left: 20px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
     font-weight: 500;
-    transition: all 0.3s;
-}
-
-nav ul li a:hover {
-    color: #f0f0f0;
-    text-decoration: underline;
-}
-
-.hero {
-    background: linear-gradient(rgba(254, 155, 0, 0.8), rgba(254, 155, 0, 0.6)), url('https://via.placeholder.com/1920x600');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    padding: 80px 0;
-    text-align: center;
-}
-
-.hero h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-}
-
-.hero p {
-    font-size: 20px;
-    max-width: 800px;
-    margin: 0 auto 30px;
-}
-
-.btn {
-    display: inline-block;
-    background-color: white;
-    color: var(--main-color);
-    padding: 12px 30px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s;
-}
-
-.btn:hover {
-    background-color: #f0f0f0;
-    transform: translateY(-2px);
-}
-
-.features {
-    padding: 60px 0;
-    background-color: white;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 50px;
-    color: var(--main-color);
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.feature-card {
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    padding: 25px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    transition: all 0.3s;
-}
-
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.feature-card h3 {
-    color: var(--main-color);
-    margin-top: 0;
-}
-
-.about {
-    padding: 60px 0;
-    text-align: center;
-    background-color: #f9f9f9;
-}
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
-}
-
-.stat-item {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-
-.stat-number {
-    font-size: 36px;
-    font-weight: bold;
-    color: var(--main-color);
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
-.stat-label {
-    font-size: 18px;
-    color: #666;
+.auth-btn.secondary {
+    background-color: transparent;
+    color: var(--main-color);
+    border: 1px solid var(--main-color);
 }
 
-.clicker-section {
-    padding: 60px 0;
-    background-color: white;
-    text-align: center;
-}
-
+/* Кликер */
 .clicker-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background-color: var(--tg-theme-secondary-bg-color, #f3f2f8);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .clicker-counter {
-    font-size: 48px;
+    font-size: 36px;
     font-weight: bold;
+    margin: 15px 0;
     color: var(--main-color);
-    margin-bottom: 20px;
 }
 
 .clicker-btn {
     background-color: var(--main-color);
     color: white;
     border: none;
-    padding: 15px 40px;
+    padding: 15px 30px;
     font-size: 18px;
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
-    transition: all 0.3s;
+    width: 100%;
+    max-width: 200px;
 }
 
-.clicker-btn:hover {
-    background-color: var(--dark-color);
-    transform: scale(1.05);
+.clicker-save {
+    margin-top: 15px;
+    font-size: 12px;
+    color: var(--tg-hint-color);
 }
 
-.codes-section {
-    padding: 60px 0;
-    background-color: #f9f9f9;
+/* Коды */
+.code-input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
 }
 
-.codes-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    max-width: 800px;
-    margin: 0 auto;
+#code-input {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: var(--tg-bg-color);
+    color: var(--tg-text-color);
+}
+
+#activate-code-btn {
+    padding: 12px 15px;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
 }
 
 .code-item {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    text-align: center;
+    background-color: var(--tg-theme-secondary-bg-color, #f3f2f8);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 10px;
 }
 
-.code-item h3 {
-    color: var(--main-color);
-    margin-top: 0;
+.code-status {
+    display: block;
+    font-size: 12px;
+    color: var(--tg-hint-color);
+    margin-top: 5px;
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 60px;
+/* Адаптация для маленьких экранов */
+@media (max-width: 600px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .auth-form {
+        padding: 0 15px;
+    }
 }
